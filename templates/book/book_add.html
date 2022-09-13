@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<form class="container" method="post">
+    {% csrf_token %}
+    <div class="mb-3 form-group w-75 ">
+        <label class="form-label" for="name">Name</label>
+        <input type="text" class="form-control" name="name" >
+    </div>
+    <div class="mb-3 form-group w-75">
+        <label class="form-label" for="auther_name">Auther_Name</label>
+        <input type="text" class="form-control" name="auther_name">
+    </div>
+    <div class="mb-3 form-group w-75">
+        <label class="form-label" for="release_year">Release_Year</label>
+        <input type="text" class="form-control" name="release_year">
+    </div>
+    <div class="mb-3 form-group w-75">
+        <label class="form-label" for="price">Price</label>
+        <input type="text" class="form-control" name="price">
+    </div>
+    <div class="mb-3 form-group w-75">
+        <label class="form-label" for="membership">Genre</label>
+        <input type="text" class="form-control" name="membership">
+    </div>
+    <button type="submit" class="btn btn-primary">Add Book</button>
+</form>
+{% endblock %}
+

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+<title>Book List</title>
+<br>
+
+<div class="row">
+<div class="container-fluid col-4" >
+<form action="{%  url 'search' %}" method="get" class="d-flex">
+    <input name="q" type="search" placeholder="search here...">
+    <button type="submit" class="btn btn-outline-success">Search</button>
+</form>
+</div>
+</div>
+
+<div class="row  mt-4">
+    <div class="col-11 text-bold mt-1  "><h4>Add New Book</h4></div>
+    <div class="col-1 p-8 "><a href="{% url 'add_book' %}"><button type="button"class="btn btn-primary btn-lg">Add</button></a>
+</div>
+    
+    <div class="container">
+        <br>
+        <h2>Book List</h2>
+    <table class="table table-dark table-red text-centre ">
+        <thead>
+            <tr>
+                
+                <th scope="col-1">Name</th>
+                <th scope="col-1">Auther_name</th>
+                <th scope="col-1">Release_year</th>
+                <th scope="col-1">Price</th>
+                <th scope="col-1">Membership</th>
+                <th scope="col-1">Edit</th>
+                <th scope="col-1">Delete</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% if book_data %}
+            {% for obj in book_data %}
+            <tr class="table-warning">
+                <td>{{ obj.name }}</td>
+                <td>{{ obj.auther_name }}</td>
+                <td>{{ obj.release_year }}</td>
+                <td>{{ obj.price }}</td>
+                <td>{{ obj.membership }}</td>
+                <td><a href="{% url 'edit_book' obj.id %}"><button type="button"
+                            class="btn btn-warning">Edit</button></a></td>
+                <td><a href="{% url 'delete_book' obj.id %}"><button type="button"
+                            class="btn btn-danger">Delete</button></a></td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+            
+        </tbody>
+    </table>
+</div>
+    <!-- <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+            <li class="page-item"><a class="page-link" href="?pg=1"> << </a></li>
+            {% if student_data.has_previous %}
+            <li class="page-item"><a class="page-link" href="?pg={{ student_data.previous_page_number }}">
+                {{ student_data.previous_page_number }}</a></li>
+            {% endif %}
+            <li class="page-item"><a class="page-link" href="?pg={{ student_data.number }}">{{ student_data.number }}</a></li>
+            {% if student_data.has_next %}
+            <li class="page-item"><a class="page-link" href="?pg={{ student_data.next_page_number }}">
+                {{ student_data.next_page_number }}</a></li>
+            {% endif %}
+            <li class="page-item"><a class="page-link" href="?pg={{ student_data.paginator.num_pages }}"> >> </a>
+            </li>
+        </ul>
+    </nav> -->
+</div>
+{% endblock %}

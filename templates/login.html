@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<form class="container" method="post">
+    {% csrf_token %}
+    <div class="mb-3 form-group w-75 ">
+        <label class="form-label" for="email">Email</label>
+        <input type="text" class="form-control" name="email" >
+    </div>
+    <div class="mb-3 form-group w-75">
+        <label class="form-label" for="password">Password</label>
+        <input type="password" class="form-control" name="password">
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <div class="container">
+        <p class="mb-0">Don't have an account? <a href="{% url 'register' %}" class="text-white-50 fw-bold">Sign Up</a></p>
+        </div>
+{% endblock %}
